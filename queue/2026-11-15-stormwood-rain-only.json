@@ -16,5 +16,6 @@
   "sleep sounds",
   "rain sounds"
  ],
- "image": "assets/stormwood_rain_only.png"
+ "image": "assets/stormwood_rain_only.png",
+ "attempt": 3
 }

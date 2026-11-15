@@ -16,6 +16,32 @@ def main():
     work = os.environ.get("WORK", "/tmp/work"); os.makedirs(work, exist_ok=True)
     audio, video, thumb = f"{work}/{name}.flac", f"{work}/{name}.mp4", f"{work}/{name}.jpg"
     secs = int(job["hours"] * 3600)
+    # 0 sign in, confirm the channel, and prove YouTube accepts the title/description (5 s private test, deleted)
+    from google.oauth2.credentials import Credentials
+    from googleapiclient.discovery import build
+    from googleapiclient.http import MediaFileUpload
+    chan_id, tok = CHANNELS[job["channel"]]
+    creds = Credentials(None, refresh_token=os.environ[tok], token_uri="https://oauth2.googleapis.com/token",
+                        client_id=os.environ["YOUTUBE_CLIENT_ID"], client_secret=os.environ["YOUTUBE_CLIENT_SECRET"])
+    yt = build("youtube", "v3", credentials=creds, cache_discovery=False)
+    mine = yt.channels().list(part="id", mine=True).execute()["items"][0]["id"]
+    assert mine == chan_id, f"wrong channel: {mine}"
+    status = {"selfDeclaredMadeForKids": False, "containsSyntheticMedia": True}
+    when = datetime.datetime.fromisoformat(job["publish_at"].replace("Z", "+00:00"))
+    if when > datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(minutes=20):
+        status.update(privacyStatus="private", publishAt=when.strftime("%Y-%m-%dT%H:%M:%SZ"))
+    else:
+        status["privacyStatus"] = "public"
+    body = {"snippet": {"title": job["title"], "description": job["description"], "tags": job.get("tags", []),
+                        "categoryId": "10", "defaultLanguage": "en"},
+            "status": status}
+    test = f"{work}/{name}_preflight.mp4"
+    sh("ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "color=c=black:s=640x360:d=5", "-f", "lavfi",
+       "-i", "anullsrc=r=48000:cl=stereo", "-t", "5", "-c:v", "libx264", "-c:a", "aac", test)
+    pb = json.loads(json.dumps(body)); pb["status"].pop("publishAt", None); pb["status"]["privacyStatus"] = "private"
+    t = yt.videos().insert(part="snippet,status", body=pb, notifySubscribers=False,
+                           media_body=MediaFileUpload(test, resumable=True)).execute()
+    yt.videos().delete(id=t["id"]).execute(); print("preflight ok", flush=True)
     # 1 image (kept in the repo once fetched)
     img = os.path.join(ROOT, job["image"])
     if not os.path.exists(img):
@@ -38,24 +64,6 @@ def main():
     assert f"{job['hours']:g} Hour" in job["title"], "title length does not match the video"
     assert len(job["title"]) <= 100
     # 6 upload
-    from google.oauth2.credentials import Credentials
-    from googleapiclient.discovery import build
-    from googleapiclient.http import MediaFileUpload
-    chan_id, tok = CHANNELS[job["channel"]]
-    creds = Credentials(None, refresh_token=os.environ[tok], token_uri="https://oauth2.googleapis.com/token",
-                        client_id=os.environ["YOUTUBE_CLIENT_ID"], client_secret=os.environ["YOUTUBE_CLIENT_SECRET"])
-    yt = build("youtube", "v3", credentials=creds, cache_discovery=False)
-    mine = yt.channels().list(part="id", mine=True).execute()["items"][0]["id"]
-    assert mine == chan_id, f"wrong channel: {mine}"
-    status = {"selfDeclaredMadeForKids": False, "containsSyntheticMedia": True, "embeddable": True}
-    when = datetime.datetime.fromisoformat(job["publish_at"].replace("Z", "+00:00"))
-    if when > datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(minutes=20):
-        status.update(privacyStatus="private", publishAt=when.strftime("%Y-%m-%dT%H:%M:%SZ"))
-    else:
-        status["privacyStatus"] = "public"
-    body = {"snippet": {"title": job["title"], "description": job["description"], "tags": job.get("tags", []),
-                        "categoryId": "10", "defaultLanguage": "en", "defaultAudioLanguage": "zxx"},
-            "status": status}
     req = yt.videos().insert(part="snippet,status", body=body, notifySubscribers=True,
                              media_body=MediaFileUpload(video, chunksize=64 * 1024 * 1024, resumable=True))
     resp = None

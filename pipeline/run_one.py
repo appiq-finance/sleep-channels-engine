@@ -25,10 +25,10 @@ def main():
     sh(sys.executable, f"{ROOT}/engine/render_long.py", job["recipe"], secs, job["seed"], audio, job.get("lufs", -17))
     sh(sys.executable, f"{ROOT}/engine/quality_check_long.py", audio, job.get("lufs", -17), secs)
     # 4 video (still scene, 1080p) + thumbnail
-    sh("ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-framerate", "2", "-i", img, "-i", audio,
+    sh("ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-framerate", "1", "-i", img, "-i", audio,
        "-vf", "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,format=yuv420p",
-       "-c:v", "libx264", "-preset", "veryfast", "-tune", "stillimage", "-crf", "20", "-g", "20",
-       "-c:a", "aac", "-b:a", "384k", "-ar", "48000", "-shortest", "-movflags", "+faststart", video)
+       "-c:v", "libx264", "-preset", "ultrafast", "-tune", "stillimage", "-crf", "20", "-g", "10",
+       "-c:a", "aac", "-b:a", "384k", "-ar", "48000", "-t", secs, "-movflags", "+faststart", video)
     sh("ffmpeg", "-y", "-loglevel", "error", "-i", img, "-vf",
        "scale=1280:720:force_original_aspect_ratio=increase,crop=1280:720", "-q:v", "3", thumb)
     # 5 accuracy check: real length of the finished video must match the title's promise

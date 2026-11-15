@@ -12,6 +12,18 @@ jobs:
       jobs: ${{ steps.p.outputs.jobs }}
     steps:
       - uses: actions/checkout@v4
+      - name: Save any new images into the repo
+        run: |
+          python3 - <<'PY'
+          import glob, json, os, urllib.request
+          for f in glob.glob("queue/*.json"):
+              j = json.load(open(f))
+              if j.get("image_url") and not os.path.exists(j["image"]):
+                  os.makedirs(os.path.dirname(j["image"]), exist_ok=True)
+                  urllib.request.urlretrieve(j["image_url"], j["image"])
+          PY
+          git config user.name "sleep-channels-bot"; git config user.email "bot@users.noreply.github.com"
+          git add assets; git diff --cached --quiet || (git commit -qm "Save scene images" && git push -q origin main)
       - id: p
         run: |
           python3 - <<'PY' >> "$GITHUB_OUTPUT"
@@ -51,7 +63,7 @@ jobs:
         if: always()
         run: |
           git config user.name "sleep-channels-bot"; git config user.email "bot@users.noreply.github.com"
-          git add done assets 2>/dev/null || true
+          git add done 2>/dev/null || true
           git diff --cached --quiet && exit 0
           git commit -qm "Published: ${{ matrix.job }}"
           for i in 1 2 3 4 5; do git pull -q --rebase origin main && git push -q origin main && break; sleep 7; done

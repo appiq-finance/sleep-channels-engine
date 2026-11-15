@@ -64,7 +64,7 @@ def grains(n, rate, kernels, r, amp_sigma=0.7):
         idx = r.integers(0, n, count)
         train = np.zeros(n)
         np.add.at(train, idx, r.lognormal(0, amp_sigma, count))
-        out += signal.fftconvolve(train, k, mode="same")
+        out += signal.oaconvolve(train, k, mode="same")
     return out
 
 

@@ -1,0 +1,57 @@
+name: Make and publish videos
+on:
+  push:
+    paths: ["queue/**"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      jobs: ${{ steps.p.outputs.jobs }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: p
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import glob, os, json
+          pend = [f for f in sorted(glob.glob("queue/*.json"))
+                  if not os.path.exists("done/" + os.path.basename(f))]
+          print("jobs=" + json.dumps(pend[:12]))
+          PY
+  make:
+    needs: plan
+    if: needs.plan.outputs.jobs != '[]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        job: ${{ fromJson(needs.plan.outputs.jobs) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg libsndfile1
+          pip install -q numpy scipy soundfile pyloudnorm google-api-python-client google-auth
+      - name: Render, check quality, upload
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN_STORMWOOD: ${{ secrets.YOUTUBE_REFRESH_TOKEN_STORMWOOD }}
+          YOUTUBE_REFRESH_TOKEN_VALLEY: ${{ secrets.YOUTUBE_REFRESH_TOKEN_VALLEY }}
+          WORK: /mnt/work
+        run: |
+          sudo mkdir -p /mnt/work && sudo chown $USER /mnt/work
+          python pipeline/run_one.py "${{ matrix.job }}"
+      - name: Record result
+        if: always()
+        run: |
+          git config user.name "sleep-channels-bot"; git config user.email "bot@users.noreply.github.com"
+          git add done assets 2>/dev/null || true
+          git diff --cached --quiet && exit 0
+          git commit -qm "Published: ${{ matrix.job }}"
+          for i in 1 2 3 4 5; do git pull -q --rebase origin main && git push -q origin main && break; sleep 7; done

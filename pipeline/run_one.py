@@ -55,7 +55,7 @@ def main():
        "-vf", "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,format=yuv420p",
        "-c:v", "libx264", "-preset", "ultrafast", "-tune", "stillimage", "-crf", "20", "-g", "10",
        "-c:a", "aac", "-b:a", "384k", "-ar", "48000", "-t", secs, "-movflags", "+faststart", video)
-    sh("ffmpeg", "-y", "-loglevel", "error", "-i", img, "-vf",
+    sh("ffmpeg", "-y", "-loglevel", "error", "-i", os.path.join(ROOT, job.get("thumb", job["image"])), "-vf",
        "scale=1280:720:force_original_aspect_ratio=increase,crop=1280:720", "-q:v", "3", thumb)
     # 5 accuracy check: real length of the finished video must match the title's promise
     dur = float(subprocess.check_output(["ffprobe", "-v", "error", "-show_entries", "format=duration",

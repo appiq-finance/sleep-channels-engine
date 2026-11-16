@@ -5,6 +5,7 @@ import sys, json, numpy as np, soundfile as sf, pyloudnorm as pyln
 from scipy.signal import resample_poly
 
 path, target, expect = sys.argv[1], float(sys.argv[2]), float(sys.argv[3])
+JUMP = float(sys.argv[4]) if len(sys.argv) > 4 else 3.0   # max allowed change between 3 s windows
 f = sf.SoundFile(path); sr = f.samplerate; meter = pyln.Meter(sr)
 energy, st, tp, clipped, l2, r2, lr, n = [], [], -200.0, 0, 0.0, 0.0, 0.0, 0
 for x in f.blocks(blocksize=300 * sr, dtype="float64", always_2d=True):
@@ -23,14 +24,14 @@ rep = {
     "file": path, "duration_s": round(n / sr, 1), "expected_s": expect,
     "integrated_LUFS": round(10 * np.log10(np.mean(energy)), 2), "target_LUFS": target,
     "true_peak_dBTP": round(tp, 2), "clipped_samples": clipped,
-    "loudness_jumps_over_3dB": int(np.sum(np.abs(np.diff(body)) > 3.0)),
+    "loudness_jumps": int(np.sum(np.abs(np.diff(body)) > JUMP)),
     "silent_dropouts": int(np.sum(body < np.median(body) - 20)),
     "left_right_balance_dB": round(10 * np.log10(l2 / r2), 2),
     "stereo_correlation": round(float(lr / np.sqrt(l2 * r2)), 3),
     "loudness_spread_dB": round(float(np.percentile(body, 95) - np.percentile(body, 5)), 2),
 }
 rep["PASS"] = bool(abs(rep["integrated_LUFS"] - target) < 1 and tp <= -1.0 and clipped == 0
-                   and rep["loudness_jumps_over_3dB"] == 0 and rep["silent_dropouts"] == 0
+                   and rep["loudness_jumps"] == 0 and rep["silent_dropouts"] == 0
                    and abs(rep["left_right_balance_dB"]) < 1.5 and rep["stereo_correlation"] < 0.5
                    and abs(rep["duration_s"] - expect) < 2)
 print(json.dumps(rep, indent=2))

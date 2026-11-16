@@ -49,7 +49,7 @@ def main():
         urllib.request.urlretrieve(job["image_url"], img)
     # 2 sound + 3 Audio Quality Engineer (exit code 1 stops everything here)
     sh(sys.executable, f"{ROOT}/engine/render_long.py", job["recipe"], secs, job["seed"], audio, job.get("lufs", -17))
-    sh(sys.executable, f"{ROOT}/engine/quality_check_long.py", audio, job.get("lufs", -17), secs)
+    sh(sys.executable, f"{ROOT}/engine/quality_check_long.py", audio, job.get("lufs", -17), secs, 6 if job["recipe"] in ("ocean_waves", "blizzard_fire", "wind_snow") else 3)
     # 4 video (still scene, 1080p) + thumbnail
     sh("ffmpeg", "-y", "-loglevel", "error", "-loop", "1", "-framerate", "1", "-i", img, "-i", audio,
        "-vf", "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,format=yuv420p",

@@ -36,8 +36,8 @@ def _wind(n, r, strength=1.0):
     """gusting wind: several noise bands whose levels drift, so the pitch seems to rise and fall.
     Gusts are shared by both ears (the wind is outside), texture is independent; swells stay gentle."""
     bands = ((90, 260, 1.0), (220, 520, 0.8), (450, 900, 0.5), (800, 1600, 0.25))
-    gust = [slow_lfo(n, r, (6, 18), 0.45) for _ in bands]
-    swell = slow_lfo(n, r, (25, 70), 0.25)
+    gust = [slow_lfo(n, r, (9, 22), 0.3) for _ in bands]
+    swell = slow_lfo(n, r, (40, 90), 0.18)
     out = []
     for _ in range(2):
         x = np.zeros(n)

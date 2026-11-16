@@ -1,0 +1,19 @@
+name: Fetch scene images
+on:
+  push:
+    paths: ["assets/fetch.json"]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 - <<'PY'
+          import json, urllib.request
+          for name, url in json.load(open("assets/fetch.json")).items():
+              urllib.request.urlretrieve(url, "assets/" + name)
+          PY
+          git config user.name "sleep-channels-bot"; git config user.email "bot@users.noreply.github.com"
+          git add assets; git diff --cached --quiet || (git commit -qm "Fetch scene images" && git push -q origin main)

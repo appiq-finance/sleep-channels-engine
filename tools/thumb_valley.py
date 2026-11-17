@@ -64,7 +64,7 @@ def main():
     if layout == "left":   x0, y0, align = pad, 190, "l"
     if layout == "right":  x0, y0, align = W - pad - block_w, 190, "r"
     if layout == "bottom": x0, y0, align = (W - block_w) / 2, H - 330, "c"
-    if layout == "top":    x0, y0, align = (W - block_w) / 2, 70, "c"
+    if layout == "top":    x0, y0, align = (W - block_w) / 2, 110, "c"
     xs = lambda tw: x0 if align == "l" else (x0 + block_w - tw if align == "r" else (W - tw) / 2)
     iy = y0 - 62
     icon(d, kind, xs(64), iy - 8, 64, LILAC)
@@ -79,7 +79,7 @@ def main():
     mx = W - pad - mw if layout != "right" else pad
     cx, my = mx, (40 if layout == "bottom" else H - 52)
     for ch in mark:
-        d.text((cx, my), ch, font=fw, fill=MOON); cx += d.textlength(ch, font=fw) + 4
+        d.text((cx + 2, my + 2), ch, font=fw, fill=(5, 10, 20)); d.text((cx, my), ch, font=fw, fill=MOON); cx += d.textlength(ch, font=fw) + 4
     img.save(out, quality=95)
 
 

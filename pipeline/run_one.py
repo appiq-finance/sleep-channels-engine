@@ -53,13 +53,12 @@ def main():
     body = {"snippet": {"title": job["title"], "description": job["description"], "tags": job.get("tags", []),
                         "categoryId": "10", "defaultLanguage": "en"},
             "status": status}
-    test = f"{work}/{name}_preflight.mp4"
-    sh("ffmpeg", "-y", "-loglevel", "error", "-f", "lavfi", "-i", "color=c=black:s=640x360:d=5", "-f", "lavfi",
-       "-i", "anullsrc=r=48000:cl=stereo", "-t", "5", "-c:v", "libx264", "-c:a", "aac", test)
-    pb = json.loads(json.dumps(body)); pb["status"].pop("publishAt", None); pb["status"]["privacyStatus"] = "private"
-    t = yt.videos().insert(part="snippet,status", body=pb, notifySubscribers=False,
-                           media_body=MediaFileUpload(test, resumable=True)).execute()
-    yt.videos().delete(id=t["id"]).execute(); print("preflight ok", flush=True)
+    # metadata check done locally (the old 5-second test upload counted against YouTube's daily upload limit)
+    sn = body["snippet"]
+    assert 0 < len(sn["title"]) <= 100 and not any(c in sn["title"] for c in "<>"), "title not allowed"
+    assert len(sn["description"].encode()) <= 5000 and not any(c in sn["description"] for c in "<>"), "description not allowed"
+    assert sum(len(t) + (2 if " " in t else 0) for t in sn["tags"]) + len(sn["tags"]) <= 500, "tags too long"
+    print("metadata ok", flush=True)
     # 1 image (kept in the repo once fetched)
     img = os.path.join(ROOT, job["image"])
     if not os.path.exists(img):

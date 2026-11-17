@@ -5,6 +5,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: write
+concurrency:            # one publishing run at a time; a new push waits for the current run to finish
+  group: publish-videos
+  cancel-in-progress: false
 jobs:
   plan:
     runs-on: ubuntu-latest
@@ -12,6 +15,7 @@ jobs:
       jobs: ${{ steps.p.outputs.jobs }}
     steps:
       - uses: actions/checkout@v4
+        with: { ref: main }   # always the latest list of finished videos
       - name: Save any new images into the repo
         run: |
           python3 - <<'PY'
@@ -44,6 +48,7 @@ jobs:
         job: ${{ fromJson(needs.plan.outputs.jobs) }}
     steps:
       - uses: actions/checkout@v4
+        with: { ref: main }   # always the latest list of finished videos
       - uses: actions/setup-python@v5
         with: { python-version: "3.11" }
       - run: |

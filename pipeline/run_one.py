@@ -9,6 +9,17 @@ CHANNELS = {"stormwood": ("UCasC3K1be1EwfBzD7Sg1S6A", "YOUTUBE_REFRESH_TOKEN_STO
             "valley": ("UC0GYz8SesCGxNZut0_I_BIg", "YOUTUBE_REFRESH_TOKEN_VALLEY")}
 
 
+def already_uploaded(yt, chan_id, title):
+    """True if this channel already has a video (public, private or scheduled) with exactly this title."""
+    req = yt.playlistItems().list(part="snippet", playlistId="UU" + chan_id[2:], maxResults=50)
+    while req is not None:
+        resp = req.execute()
+        if any(i["snippet"]["title"] == title for i in resp.get("items", [])):
+            return True
+        req = yt.playlistItems().list_next(req, resp)
+    return False
+
+
 def sh(*a):
     print("+", " ".join(map(str, a)), flush=True); subprocess.run(list(map(str, a)), check=True)
 
@@ -28,6 +39,8 @@ def main():
     yt = build("youtube", "v3", credentials=creds, cache_discovery=False)
     mine = yt.channels().list(part="id", mine=True).execute()["items"][0]["id"]
     assert mine == chan_id, f"wrong channel: {mine}"
+    if os.path.exists(f"{ROOT}/done/{name}.json") or already_uploaded(yt, chan_id, job["title"]):
+        print("already published - skipping (no duplicate upload)"); return
     status = {"selfDeclaredMadeForKids": False, "containsSyntheticMedia": True}
     when = datetime.datetime.fromisoformat(job["publish_at"].replace("Z", "+00:00"))
     if when > datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(minutes=20):
@@ -65,7 +78,9 @@ def main():
     assert abs(dur - secs) < 5, f"video is {dur}s, expected {secs}s"
     assert f"{job['hours']:g} Hour" in job["title"], "title length does not match the video"
     assert len(job["title"]) <= 100
-    # 6 upload
+    # 6 upload (checked again: another run may have uploaded it while this one was rendering)
+    if already_uploaded(yt, chan_id, job["title"]):
+        print("already published by another run - skipping (no duplicate upload)"); return
     req = yt.videos().insert(part="snippet,status", body=body, notifySubscribers=True,
                              media_body=MediaFileUpload(video, chunksize=64 * 1024 * 1024, resumable=True))
     resp = None

@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-11-17T09:54:19.336170Z",
+  "channels": {
+    "STORMWOOD": {
+      "expected_channel_id": "UCasC3K1be1EwfBzD7Sg1S6A",
+      "signed_in_as": [
+        {
+          "id": "UCasC3K1be1EwfBzD7Sg1S6A",
+          "title": "Stormwood Cabin"
+        }
+      ],
+      "result": "OK"
+    },
+    "VALLEY": {
+      "expected_channel_id": "UC0GYz8SesCGxNZut0_I_BIg",
+      "signed_in_as": [
+        {
+          "id": "UC0GYz8SesCGxNZut0_I_BIg",
+          "title": "Valley & Tide"
+        }
+      ],
+      "result": "OK"
+    }
+  }
+}

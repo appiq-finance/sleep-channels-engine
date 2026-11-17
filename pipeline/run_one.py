@@ -1,6 +1,6 @@
 """Makes and publishes ONE video from a queue file: render -> quality check -> video -> upload.
 If the quality check fails, nothing is uploaded.   usage: run_one.py queue/<file>.json"""
-import json, os, subprocess, sys, datetime, urllib.request
+import json, os, subprocess, sys, datetime, time, urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 sys.path.insert(0, os.path.join(ROOT, "engine"))
@@ -13,7 +13,7 @@ def already_uploaded(yt, chan_id, title):
     """True if this channel already has a video (public, private or scheduled) with exactly this title."""
     req = yt.playlistItems().list(part="snippet", playlistId="UU" + chan_id[2:], maxResults=50)
     while req is not None:
-        resp = req.execute()
+        resp = req.execute(num_retries=3)
         if any(i["snippet"]["title"] == title for i in resp.get("items", [])):
             return True
         req = yt.playlistItems().list_next(req, resp)
@@ -34,9 +34,12 @@ def main():
     from googleapiclient.discovery import build
     from googleapiclient.http import MediaFileUpload
     chan_id, tok = CHANNELS[job["channel"]]
-    creds = Credentials(None, refresh_token=os.environ[tok], token_uri="https://oauth2.googleapis.com/token",
-                        client_id=os.environ["YOUTUBE_CLIENT_ID"], client_secret=os.environ["YOUTUBE_CLIENT_SECRET"])
-    yt = build("youtube", "v3", credentials=creds, cache_discovery=False)
+    def connect():
+        """fresh sign-in + fresh connection (a connection left idle during the 1-hour render goes stale)."""
+        creds = Credentials(None, refresh_token=os.environ[tok], token_uri="https://oauth2.googleapis.com/token",
+                            client_id=os.environ["YOUTUBE_CLIENT_ID"], client_secret=os.environ["YOUTUBE_CLIENT_SECRET"])
+        return build("youtube", "v3", credentials=creds, cache_discovery=False)
+    yt = connect()
     mine = yt.channels().list(part="id", mine=True).execute()["items"][0]["id"]
     assert mine == chan_id, f"wrong channel: {mine}"
     if os.path.exists(f"{ROOT}/done/{name}.json") or already_uploaded(yt, chan_id, job["title"]):
@@ -79,7 +82,14 @@ def main():
     assert f"{job['hours']:g} Hour" in job["title"], "title length does not match the video"
     assert len(job["title"]) <= 100
     # 6 upload (checked again: another run may have uploaded it while this one was rendering)
-    if already_uploaded(yt, chan_id, job["title"]):
+    for attempt in range(4):
+        try:
+            yt = connect(); dup = already_uploaded(yt, chan_id, job["title"]); break
+        except Exception as e:
+            print("sign-in/check retry", attempt + 1, type(e).__name__, flush=True); time.sleep(15 * (attempt + 1))
+    else:
+        raise SystemExit("could not reach YouTube after the render - not uploading")
+    if dup:
         print("already published by another run - skipping (no duplicate upload)"); return
     req = yt.videos().insert(part="snippet,status", body=body, notifySubscribers=True,
                              media_body=MediaFileUpload(video, chunksize=64 * 1024 * 1024, resumable=True))

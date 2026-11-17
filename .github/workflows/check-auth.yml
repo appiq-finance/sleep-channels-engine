@@ -1,0 +1,53 @@
+name: Check channel connections
+on:
+  push:
+    paths: ["checks/request*"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test each channel's sign-in (prints only public channel names)
+        env:
+          CID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          CSEC: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          T_STORMWOOD: ${{ secrets.YOUTUBE_REFRESH_TOKEN_STORMWOOD }}
+          T_VALLEY: ${{ secrets.YOUTUBE_REFRESH_TOKEN_VALLEY }}
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request, urllib.parse, datetime
+          expected = {"STORMWOOD": "UCasC3K1be1EwfBzD7Sg1S6A", "VALLEY": "UC0GYz8SesCGxNZut0_I_BIg"}
+          out = {"checked_at": datetime.datetime.utcnow().isoformat() + "Z", "channels": {}}
+          for slot, want in expected.items():
+              r = {"expected_channel_id": want}
+              tok = os.environ.get("T_" + slot, "")
+              if not tok:
+                  r["result"] = "MISSING token secret"
+              else:
+                  try:
+                      data = urllib.parse.urlencode({"client_id": os.environ["CID"], "client_secret": os.environ["CSEC"],
+                                                     "refresh_token": tok, "grant_type": "refresh_token"}).encode()
+                      at = json.load(urllib.request.urlopen("https://oauth2.googleapis.com/token", data))["access_token"]
+                      req = urllib.request.Request("https://www.googleapis.com/youtube/v3/channels?part=snippet&mine=true",
+                                                   headers={"Authorization": "Bearer " + at})
+                      items = json.load(urllib.request.urlopen(req)).get("items", [])
+                      r["signed_in_as"] = [{"id": i["id"], "title": i["snippet"]["title"]} for i in items]
+                      r["result"] = "OK" if any(i["id"] == want for i in items) else "WRONG CHANNEL"
+                  except urllib.error.HTTPError as e:
+                      body = e.read().decode(errors="ignore")
+                      r["result"] = "FAILED"
+                      try: r["error"] = json.loads(body).get("error")
+                      except Exception: r["error"] = e.code
+              out["channels"][slot] = r
+          json.dump(out, open("checks/result.json", "w"), indent=2)
+          print(json.dumps(out, indent=2))
+          PY
+      - name: Save result
+        run: |
+          git config user.name "sleep-channels-bot"; git config user.email "bot@users.noreply.github.com"
+          git add checks/result.json; git diff --cached --quiet && exit 0
+          git commit -qm "Connection check result"
+          for i in 1 2 3; do git pull -q --rebase origin main && git push -q origin main && break; sleep 5; done

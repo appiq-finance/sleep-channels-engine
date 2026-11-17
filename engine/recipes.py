@@ -2,6 +2,7 @@
 fire_level lets the long renderer die the fire down slowly at the end of a video."""
 import os
 import numpy as np
+from scipy import signal
 from sound_engine import *
 
 
@@ -166,3 +167,90 @@ HAS_FIRE.add("blizzard_fire")
 
 # sounds that are meant to rise and fall (waves, gusts): the quality check allows gentle swells for these
 DYNAMIC = {"ocean_waves", "blizzard_fire", "wind_snow"}
+
+
+# ---------- new recipes (17 Nov, 4-week plan) ----------
+def _hearth(n, r, level=1.0):
+    """a fire on its own, for sleep: an independent burning log in each ear (a little bleed between them),
+    soft crackles, and a steady ember bed with only gentle flicker, so there are no gaps or spikes.
+    The end-of-video die-down is softened (about -3 dB at most) because the fire is the whole sound."""
+    lv = 0.6 + 0.4 * max(level, 0.0)
+    ch = []
+    for _ in range(2):
+        crackle, pops, _, _ = fire_v2(n, r, 1.2, 0.06)
+        flick = slow_lfo(n, r, (4, 12), 0.15)
+        roar = lowpass(coloured_noise(n, "brown", r), 320) * flick
+        hiss = bandpass(coloured_noise(n, "pink", r), 1500, 6000, 2) * flick
+        ch.append((0.17 * norm(crackle) + 0.05 * norm(pops), 0.50 * norm(roar) + 0.16 * norm(hiss)))
+    out = np.stack([ch[0][0] + 0.3 * ch[1][0] + ch[0][1], ch[1][0] + 0.3 * ch[0][0] + ch[1][1]])
+    k = 3.0 * np.sqrt(np.mean(out ** 2))          # round off the sharpest crackle peaks (sleep-safe, keeps loudness on target)
+    return lv * k * np.tanh(out / k)
+
+
+def fire_only(n, r, fire_level=1.0):
+    """Stormwood hearth on a still winter night: fire alone, quiet room."""
+    return _hearth(n, r, fire_level) + 0.10 * norm(room_tone(n, r))
+
+
+def christmas_fire(n, r, fire_level=1.0):
+    """Christmas night: fire inside, soft snowfall and a faint muffled breeze outside. No music, no bells."""
+    hush = np.stack([lowpass(c, 700) for c in _wind(n, r, 0.5)])     # breeze heard through log walls
+    return _hearth(n, r, fire_level) + 0.22 * norm(hush) + 0.06 * _snow_on_glass(n, r) + 0.10 * norm(room_tone(n, r))
+
+
+def waterfall(n, r, fire_level=1.0):
+    """fern-gorge waterfall: broad steady roar, a low plunge-pool rumble and close splashing."""
+    roar = np.stack([bandpass(coloured_noise(n, "pink", r), 180, 9000, 2) * slow_lfo(n, r, (20, 60), 0.06)
+                     for _ in range(2)])
+    pool = np.stack([lowpass(coloured_noise(n, "brown", r), 220) for _ in range(2)])
+    return 0.85 * norm(roar) + 0.35 * norm(pool) + 0.45 * _stream(n, r)
+
+
+def _crickets(n, r, count=16):
+    """a chorus of field crickets: each sings short pulsed chirps at its own pitch and pace,
+    fading in and out slowly. Different crickets in each ear (wide, natural stereo)."""
+    t = np.arange(n) / SR
+    out = np.zeros((2, n))
+    for c in range(2):
+        for _ in range(count):
+            f = r.uniform(3900, 5200); per = 1 / r.uniform(1.4, 3.2)
+            pulses = r.integers(2, 5); pw, gap = r.uniform(0.010, 0.016), r.uniform(0.016, 0.024)
+            L = int(SR * (pulses * gap + pw)) + 1; k = np.zeros(L)
+            for p in range(pulses):
+                s = int(SR * p * gap); m = int(SR * pw)
+                k[s:s + m] += np.sin(np.pi * np.arange(m) / m) ** 2
+            train = np.zeros(n)
+            tk = r.uniform(0, per); jit = r.uniform(0.01, 0.04)
+            idx = []
+            while tk < n / SR:
+                idx.append(int(tk * SR)); tk += per * (1 + jit * r.standard_normal())
+            np.add.at(train, np.array(idx, dtype=int), 1.0)
+            env = signal.oaconvolve(train, k, mode="full")[:n]
+            amp = slow_lfo(n, r, (40, 150), 0.25) * r.uniform(0.5, 1.0)
+            out[c] += env * amp * np.sin(2 * np.pi * f * t + r.uniform(0, 6))
+    return out
+
+
+def _frogs(n, r, per_min=10):
+    """soft pond frogs: low pulsed croaks, sparse and far off."""
+    out = np.zeros((2, n))
+    for _ in range(r.poisson(per_min * n / SR / 60)):
+        dur = r.uniform(0.25, 0.7); L = int(SR * dur); tt = np.arange(L) / SR
+        f, pr = r.uniform(380, 900), r.uniform(18, 40)
+        env = np.sin(np.pi * tt / dur) ** 2 * (0.5 + 0.5 * np.sign(np.sin(2 * np.pi * pr * tt)))
+        env = lowpass(env, 150, 2)
+        body = env * (np.sin(2 * np.pi * f * tt) + 0.4 * np.sin(2 * np.pi * 2 * f * tt)) * r.lognormal(0, 0.3)
+        s = r.integers(0, max(1, n - L)); p = r.uniform(0.15, 0.85)
+        out[0, s:s + L] += body * (1 - p); out[1, s:s + L] += body * p
+    return out
+
+
+def pond_night(n, r, fire_level=1.0):
+    """summer pond at night: cricket chorus, far-off frogs, faint night air. No music."""
+    air = np.stack([bandpass(coloured_noise(n, "pink", r), 150, 3000, 2) for _ in range(2)])
+    return 0.55 * norm(_crickets(n, r)) + 0.12 * norm(_frogs(n, r)) + 0.35 * norm(air)
+
+
+for f in (fire_only, christmas_fire, waterfall, pond_night):
+    RECIPES[f.__name__] = f
+HAS_FIRE.update({"fire_only", "christmas_fire"})

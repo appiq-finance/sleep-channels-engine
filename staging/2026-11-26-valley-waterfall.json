@@ -1,0 +1,42 @@
+{
+ "channel": "valley",
+ "recipe": "waterfall",
+ "seed": 20261126,
+ "hours": 8,
+ "publish_at": "2026-11-26T18:00:00Z",
+ "title": "Waterfall Sounds for Sleeping - No Music | Fern Gorge Waterfall 8 Hours",
+ "description": "8 hours of a waterfall falling into a misty plunge pool in a quiet fern gorge at dusk. A steady, full roar with soft splashing close by and a deep low rumble from the pool. No music, no birds, no talking.\nThe water never loops, with a gentle fade in and a slow fade out at the end. Made for falling asleep, staying asleep, reading and study.\n\n0:00:00 Waterfall begins\n0:00:10 Fern gorge waterfall (8 hours)\n\nValley & Tide - nature sounds from wild places, for deep sleep.\nNew sessions every Tuesday, Thursday and Saturday.\n\nScenes and sounds are original, created with AI tools and edited by Valley & Tide.\n\n#waterfallsounds #whitenoise #sleepsounds",
+ "tags": [
+  "waterfall sounds for sleeping",
+  "waterfall sounds no music",
+  "waterfall white noise",
+  "nature sounds for sleep",
+  "8 hours waterfall",
+  "water sounds",
+  "sleep sounds"
+ ],
+ "image": "assets/vt_scene_waterfall.png",
+ "thumb": "assets/vt_thumb_waterfall.jpg",
+ "localizations": {
+  "es": {
+   "title": "Sonido de Cascada para Dormir - Sin Música | Cascada en un Barranco de Helechos 8 Horas",
+   "description": "8 horas de una cascada que cae en una poza con niebla, en un tranquilo barranco de helechos al anochecer. Sin música, sin pájaros, sin voces.\n\nEscenas y sonidos originales, creados con herramientas de IA y editados por Valley & Tide."
+  },
+  "de": {
+   "title": "Wasserfall Geräusche zum Einschlafen - Ohne Musik | Wasserfall in einer Farnschlucht 8 Stunden",
+   "description": "8 Stunden Wasserfall in einer stillen Farnschlucht in der Dämmerung, mit nebligem Becken. Keine Musik, keine Vögel, keine Stimmen.\n\nSzenen und Klänge sind original, mit KI-Werkzeugen erstellt und von Valley & Tide bearbeitet."
+  },
+  "fr": {
+   "title": "Bruit de Cascade pour Dormir - Sans Musique | Cascade dans une Gorge de Fougères 8 Heures",
+   "description": "8 heures d'une cascade qui tombe dans un bassin brumeux, au creux d'une gorge de fougères au crépuscule. Sans musique, sans oiseaux, sans voix.\n\nScènes et sons originaux, créés avec des outils d'IA et montés par Valley & Tide."
+  },
+  "pt": {
+   "title": "Som de Cachoeira para Dormir - Sem Música | Cachoeira num Vale de Samambaias 8 Horas",
+   "description": "8 horas de uma cachoeira caindo num poço com névoa, num vale tranquilo de samambaias ao entardecer. Sem música, sem pássaros, sem vozes.\n\nCenas e sons originais, criados com ferramentas de IA e editados por Valley & Tide."
+  },
+  "ja": {
+   "title": "眠れる滝の音 - 音楽なし | シダの渓谷の滝 8時間",
+   "description": "夕暮れのシダの渓谷で、霧の立つ滝つぼに落ちる滝の音を8時間。音楽なし、鳥の声なし、話し声なし。\n\n映像と音はオリジナルで、AIツールで作成し、Valley & Tideが編集しています。"
+  }
+ }
+}

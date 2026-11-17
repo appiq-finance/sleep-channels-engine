@@ -1,0 +1,42 @@
+{
+ "channel": "valley",
+ "recipe": "pond_night",
+ "seed": 20261128,
+ "hours": 8,
+ "publish_at": "2026-11-28T18:00:00Z",
+ "title": "Night Sounds: Crickets and Frogs by a Summer Pond | Sleep 8 Hours",
+ "description": "8 hours of a warm summer night beside a still pond: a soft chorus of crickets, far-off frogs and quiet night air. No music, no rain, no talking.\nThe night never loops, with a gentle fade in and a slow fade out at the end. Made for falling asleep, staying asleep and summer nights.\n\n0:00:00 Night begins\n0:00:10 Crickets and frogs by the pond (8 hours)\n\nValley & Tide - nature sounds from wild places, for deep sleep.\nNew sessions every Tuesday, Thursday and Saturday.\n\nScenes and sounds are original, created with AI tools and edited by Valley & Tide.\n\n#nightsounds #crickets #sleepsounds",
+ "tags": [
+  "night sounds crickets and frogs",
+  "cricket sounds for sleeping",
+  "summer night sounds",
+  "frog sounds",
+  "pond at night",
+  "nature sounds for sleep",
+  "8 hours night sounds"
+ ],
+ "image": "assets/vt_scene_pond_night.png",
+ "thumb": "assets/vt_thumb_pond_night.jpg",
+ "localizations": {
+  "es": {
+   "title": "Sonidos de la Noche: Grillos y Ranas junto a un Estanque de Verano | Dormir 8 Horas",
+   "description": "8 horas de una cálida noche de verano junto a un estanque: grillos, ranas a lo lejos y aire nocturno. Sin música, sin lluvia, sin voces.\n\nEscenas y sonidos originales, creados con herramientas de IA y editados por Valley & Tide."
+  },
+  "de": {
+   "title": "Nachtgeräusche: Grillen und Frösche am Sommerteich | Schlafen 8 Stunden",
+   "description": "8 Stunden warme Sommernacht an einem stillen Teich: Grillen, entfernte Frösche und leise Nachtluft. Keine Musik, kein Regen, keine Stimmen.\n\nSzenen und Klänge sind original, mit KI-Werkzeugen erstellt und von Valley & Tide bearbeitet."
+  },
+  "fr": {
+   "title": "Bruits de la Nuit : Grillons et Grenouilles près d'un Étang d'Été | Dormir 8 Heures",
+   "description": "8 heures d'une douce nuit d'été au bord d'un étang : grillons, grenouilles au loin et air nocturne. Sans musique, sans pluie, sans voix.\n\nScènes et sons originaux, créés avec des outils d'IA et montés par Valley & Tide."
+  },
+  "pt": {
+   "title": "Sons da Noite: Grilos e Sapos à Beira de um Lago de Verão | Dormir 8 Horas",
+   "description": "8 horas de uma noite quente de verão à beira de um lago: grilos, sapos ao longe e o ar da noite. Sem música, sem chuva, sem vozes.\n\nCenas e sons originais, criados com ferramentas de IA e editados por Valley & Tide."
+  },
+  "ja": {
+   "title": "夜の音：夏の池のコオロギとカエル | 睡眠用 8時間",
+   "description": "静かな池のほとりの夏の夜を8時間。コオロギの合唱、遠くのカエル、夜の空気。音楽なし、雨なし、話し声なし。\n\n映像と音はオリジナルで、AIツールで作成し、Valley & Tideが編集しています。"
+  }
+ }
+}

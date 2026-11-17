@@ -1,5 +1,5 @@
 """Valley & Tide thumbnail maker (1280x720). Same colours and font every time, layout changes per video.
-usage: thumb_valley.py <scene.png> <out.png> <layout: left|right|bottom|top> <icon: rain|wave|stream|storm> "<LINE 1>" "<LINE 2>" "<small line>"
+usage: thumb_valley.py <scene.png> <out.png> <layout: left|right|bottom|top> <icon: rain|wave|stream|storm|moon> "<LINE 1>" "<LINE 2>" "<small line>"
 Font: Outfit (SIL Open Font Licence, assets/fonts). Colours: Valley & Tide brand palette."""
 import sys, os
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
@@ -39,6 +39,10 @@ def icon(d, kind, x, y, s, col):
         for row in (0, 0.25, 0.5):
             pts = [(x + t * s, y + row * s + 0.07 * s * math.sin(t * 2 * math.pi * 2 + row * 4)) for t in [k / 40 for k in range(41)]]
             d.line(pts, fill=col, width=w, joint="curve")
+    elif kind == "moon":
+        d.arc([x, y, x + 0.8 * s, y + 0.8 * s], 60, 300, fill=col, width=w)
+        d.arc([x + 0.22 * s, y + 0.02 * s, x + 0.9 * s, y + 0.7 * s], 75, 285, fill=col, width=w)
+        d.ellipse([x + 0.85 * s, y - 0.05 * s, x + 0.85 * s + w * 1.6, y - 0.05 * s + w * 1.6], fill=col)
     elif kind == "storm":
         d.arc([x, y, x + 0.55 * s, y + 0.45 * s], 160, 360, fill=col, width=w)
         d.arc([x + 0.35 * s, y - 0.12 * s, x + s, y + 0.45 * s], 190, 30, fill=col, width=w)

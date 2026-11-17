@@ -53,6 +53,10 @@ def main():
     body = {"snippet": {"title": job["title"], "description": job["description"], "tags": job.get("tags", []),
                         "categoryId": "10", "defaultLanguage": "en"},
             "status": status}
+    if job.get("localizations"):     # translated titles/descriptions (es, de, fr, pt, ja) so other countries' searches find the video
+        body["localizations"] = job["localizations"]
+        for lang, loc in job["localizations"].items():
+            assert 0 < len(loc["title"]) <= 100 and not any(c in loc["title"] + loc["description"] for c in "<>"), f"{lang} text not allowed"
     # metadata check done locally (the old 5-second test upload counted against YouTube's daily upload limit)
     sn = body["snippet"]
     assert 0 < len(sn["title"]) <= 100 and not any(c in sn["title"] for c in "<>"), "title not allowed"
@@ -90,7 +94,7 @@ def main():
         raise SystemExit("could not reach YouTube after the render - not uploading")
     if dup:
         print("already published by another run - skipping (no duplicate upload)"); return
-    req = yt.videos().insert(part="snippet,status", body=body, notifySubscribers=True,
+    req = yt.videos().insert(part="snippet,status" + (",localizations" if "localizations" in body else ""), body=body, notifySubscribers=True,
                              media_body=MediaFileUpload(video, chunksize=64 * 1024 * 1024, resumable=True))
     resp = None
     while resp is None:

@@ -1,0 +1,42 @@
+{
+ "channel": "stormwood",
+ "recipe": "christmas_fire",
+ "seed": 20261203,
+ "hours": 8,
+ "publish_at": "2026-12-03T19:00:00Z",
+ "title": "Cozy Christmas Ambience - Fireplace & Gentle Snowfall, No Music | Christmas Cabin 8 Hours",
+ "description": "8 hours of Christmas night at Stormwood Cabin: a log fire crackling under the stockings while snow falls gently past the window and a soft winter breeze moves through the pines. No music, no bells, no talking.\nThe sound never loops, with a gentle fade in and a slow die-down to embers at the end. Made for falling asleep, staying asleep, reading and quiet Christmas evenings.\n\n0:00:00 Christmas night begins\n0:00:10 Fireplace and gentle snowfall (8 hours)\n7:45:00 The fire slowly burns down\n\nStormwood Cabin - Storms outside. Warmth inside.\nNew sessions every Monday and Thursday.\n\nScenes and sounds are original, created with AI tools and edited by Stormwood Cabin.\n\n#christmasambience #fireplace #sleepsounds",
+ "tags": [
+  "cozy christmas ambience",
+  "christmas fireplace no music",
+  "christmas cabin ambience",
+  "fireplace and snow",
+  "winter cabin sounds",
+  "8 hours fireplace",
+  "sleep sounds"
+ ],
+ "image": "assets/scene_christmas_fire.png",
+ "thumb": "assets/thumb_christmas_fire.jpg",
+ "localizations": {
+  "es": {
+   "title": "Ambiente Navideño Acogedor - Chimenea y Nieve Suave, Sin Música | Cabaña de Navidad 8 Horas",
+   "description": "8 horas de Nochebuena en Stormwood Cabin: fuego de leña, nieve que cae suavemente y una brisa de invierno. Sin música, sin campanas, sin voces.\n\nEscenas y sonidos originales, creados con herramientas de IA y editados por Stormwood Cabin."
+  },
+  "de": {
+   "title": "Gemütliche Weihnachtsatmosphäre - Kamin & Leiser Schneefall, Ohne Musik | Weihnachtshütte 8 Stunden",
+   "description": "8 Stunden Weihnachtsnacht in der Stormwood Cabin: knisterndes Kaminfeuer, leise fallender Schnee und eine sanfte Winterbrise. Keine Musik, keine Glocken, keine Stimmen.\n\nSzenen und Klänge sind original, mit KI-Werkzeugen erstellt und von Stormwood Cabin bearbeitet."
+  },
+  "fr": {
+   "title": "Ambiance de Noël Cosy - Cheminée et Neige Douce, Sans Musique | Chalet de Noël 8 Heures",
+   "description": "8 heures de nuit de Noël à Stormwood Cabin : feu de bois, neige qui tombe doucement et légère brise d'hiver. Sans musique, sans cloches, sans voix.\n\nScènes et sons originaux, créés avec des outils d'IA et montés par Stormwood Cabin."
+  },
+  "pt": {
+   "title": "Ambiente de Natal Aconchegante - Lareira e Neve Suave, Sem Música | Cabana de Natal 8 Horas",
+   "description": "8 horas de noite de Natal na Stormwood Cabin: lareira crepitando, neve caindo suavemente e uma brisa de inverno. Sem música, sem sinos, sem vozes.\n\nCenas e sons originais, criados com ferramentas de IA e editados por Stormwood Cabin."
+  },
+  "ja": {
+   "title": "クリスマスの暖炉と雪 - 音楽なし | クリスマスの山小屋 8時間",
+   "description": "ストームウッド・キャビンのクリスマスの夜を8時間。はぜる暖炉の火、静かに降る雪、やさしい冬の風。音楽なし、鈴の音なし、話し声なし。\n\n映像と音はオリジナルで、AIツールで作成し、Stormwood Cabinが編集しています。"
+  }
+ }
+}

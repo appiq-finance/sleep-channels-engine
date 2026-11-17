@@ -1,0 +1,42 @@
+{
+ "channel": "stormwood",
+ "recipe": "fire_only",
+ "seed": 20261130,
+ "hours": 8,
+ "publish_at": "2026-11-30T19:00:00Z",
+ "title": "Crackling Fireplace Sounds for Sleeping - No Music, No Rain | Cozy Cabin Fireplace 8 Hours",
+ "description": "8 hours of a log fire crackling in the stone hearth of Stormwood Cabin on a still winter night. Soft crackles, a warm steady burn and the odd gentle pop. No rain, no music, no talking.\nThe fire never loops, with a gentle fade in and a slow die-down to embers at the end. Made for falling asleep, staying asleep, reading and study.\n\n0:00:00 Fire is lit\n0:00:10 Crackling fireplace (8 hours)\n7:45:00 The fire slowly burns down\n\nStormwood Cabin - Storms outside. Warmth inside.\nNew sessions every Monday and Thursday.\n\nScenes and sounds are original, created with AI tools and edited by Stormwood Cabin.\n\n#fireplace #cracklingfire #sleepsounds",
+ "tags": [
+  "crackling fireplace sounds",
+  "fireplace no music",
+  "fireplace sounds for sleeping",
+  "cozy cabin fireplace",
+  "fire crackling",
+  "8 hours fireplace",
+  "sleep sounds"
+ ],
+ "image": "assets/scene_fire_only.png",
+ "thumb": "assets/thumb_fire_only.jpg",
+ "localizations": {
+  "es": {
+   "title": "Sonido de Chimenea Crepitante para Dormir - Sin Música, Sin Lluvia | Cabaña Acogedora 8 Horas",
+   "description": "8 horas de un fuego de leña crepitando en la chimenea de piedra de Stormwood Cabin en una noche de invierno. Sin lluvia, sin música, sin voces.\n\nEscenas y sonidos originales, creados con herramientas de IA y editados por Stormwood Cabin."
+  },
+  "de": {
+   "title": "Knisterndes Kaminfeuer zum Einschlafen - Ohne Musik, Ohne Regen | Gemütliche Hütte 8 Stunden",
+   "description": "8 Stunden knisterndes Holzfeuer im Steinkamin der Stormwood Cabin in einer stillen Winternacht. Kein Regen, keine Musik, keine Stimmen.\n\nSzenen und Klänge sind original, mit KI-Werkzeugen erstellt und von Stormwood Cabin bearbeitet."
+  },
+  "fr": {
+   "title": "Bruit de Feu de Cheminée pour Dormir - Sans Musique, Sans Pluie | Chalet Cosy 8 Heures",
+   "description": "8 heures d'un feu de bois qui crépite dans la cheminée en pierre de Stormwood Cabin, par une nuit d'hiver calme. Sans pluie, sans musique, sans voix.\n\nScènes et sons originaux, créés avec des outils d'IA et montés par Stormwood Cabin."
+  },
+  "pt": {
+   "title": "Som de Lareira Crepitando para Dormir - Sem Música, Sem Chuva | Cabana Aconchegante 8 Horas",
+   "description": "8 horas de uma lareira de lenha crepitando na Stormwood Cabin numa noite calma de inverno. Sem chuva, sem música, sem vozes.\n\nCenas e sons originais, criados com ferramentas de IA e editados por Stormwood Cabin."
+  },
+  "ja": {
+   "title": "眠れる暖炉の音 - 音楽なし・雨なし | 山小屋の暖炉 8時間",
+   "description": "静かな冬の夜、ストームウッド・キャビンの石の暖炉で薪がはぜる音を8時間。雨なし、音楽なし、話し声なし。\n\n映像と音はオリジナルで、AIツールで作成し、Stormwood Cabinが編集しています。"
+  }
+ }
+}

@@ -181,9 +181,9 @@ def _hearth(n, r, level=1.0):
         flick = slow_lfo(n, r, (4, 12), 0.15)
         roar = lowpass(coloured_noise(n, "brown", r), 320) * flick
         hiss = bandpass(coloured_noise(n, "pink", r), 1500, 6000, 2) * flick
-        ch.append((0.17 * norm(crackle) + 0.05 * norm(pops), 0.50 * norm(roar) + 0.16 * norm(hiss)))
+        ch.append((0.13 * norm(crackle) + 0.04 * norm(pops), 0.50 * norm(roar) + 0.16 * norm(hiss)))
     out = np.stack([ch[0][0] + 0.3 * ch[1][0] + ch[0][1], ch[1][0] + 0.3 * ch[0][0] + ch[1][1]])
-    k = 3.0 * np.sqrt(np.mean(out ** 2))          # round off the sharpest crackle peaks (sleep-safe, keeps loudness on target)
+    k = 2.5 * np.sqrt(np.mean(out ** 2))          # round off the sharpest crackle peaks (sleep-safe, keeps loudness on target)
     return lv * k * np.tanh(out / k)
 
 

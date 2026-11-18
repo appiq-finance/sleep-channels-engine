@@ -178,7 +178,10 @@ def _hearth(n, r, level=1.0):
     ch = []
     for _ in range(2):
         crackle, pops, _, _ = fire_v2(n, r, 1.2, 0.06)
-        flick = slow_lfo(n, r, (4, 12), 0.15)
+        # cap loud crackle clusters: half-second loudness never rises above twice its usual level
+        env = np.sqrt(np.maximum(lowpass(crackle ** 2, 2.0, 2), 1e-12))
+        crackle = crackle * np.minimum(1.0, 1.6 * np.median(env) / env)
+        flick = slow_lfo(n, r, (4, 12), 0.10)
         roar = lowpass(coloured_noise(n, "brown", r), 320) * flick
         hiss = bandpass(coloured_noise(n, "pink", r), 1500, 6000, 2) * flick
         ch.append((0.13 * norm(crackle) + 0.04 * norm(pops), 0.50 * norm(roar) + 0.16 * norm(hiss)))

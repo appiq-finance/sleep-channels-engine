@@ -257,3 +257,39 @@ def pond_night(n, r, fire_level=1.0):
 for f in (fire_only, christmas_fire, waterfall, pond_night):
     RECIPES[f.__name__] = f
 HAS_FIRE.update({"fire_only", "christmas_fire"})
+
+
+# ---------- batch 2 (1, 5, 10 Dec) ----------
+def tent_rain(n, r, fire_level=1.0):
+    """steady rain on a taut tent in a pine forest: soft fabric taps close by, muffled rain on the forest
+    outside, the odd heavier drip from the pines. No thunder."""
+    fabric = [drop_kernel(r, 220, 1300, r.uniform(5, 12)) for _ in range(10)]
+    taps = np.stack([grains(n, 900, fabric, r, 0.6) for _ in range(2)])
+    outside = np.stack([lowpass(c, 2500) for c in rain_bed(n, r)])
+    drips = np.stack([grains(n, 1.2, [drop_kernel(r, 180, 700, r.uniform(10, 20)) for _ in range(6)], r, 0.4)
+                      for _ in range(2)])
+    return 0.75 * norm(taps) + 0.55 * norm(outside) + 0.12 * norm(drips)
+
+
+def summer_storm(n, r, fire_level=1.0):
+    """Australian summer thunderstorm: heavy warm rain on gum leaves, warm gusty wind, frequent far rolling thunder."""
+    gum = [drop_kernel(r, 900, 5000, r.uniform(1.5, 3.5)) for _ in range(10)]
+    rain = (0.8 * norm(rain_bed(n, r, 1.3)) + 0.55 * norm(patter(n, r, 2200))
+            + 0.35 * norm(np.stack([grains(n, 450, gum, r, 0.8) for _ in range(2)])))
+    return rain + 0.35 * _wind(n, r, 0.8) + THUNDER_GAIN * _rolling_thunder(n, r, 20)
+
+
+def sleet_stove(n, r, fire_level=1.0):
+    """Stormwood kitchen: freezing rain and sleet ticking on the window, wind outside,
+    a woodstove burning behind its iron door (the fire is muffled and close)."""
+    ice = [drop_kernel(r, 3000, 9000, r.uniform(0.6, 1.4)) for _ in range(12)]
+    ticks = np.stack([grains(n, 600, ice, r, 0.5) for _ in range(2)])
+    wet = np.stack([lowpass(c, 3500) for c in rain_bed(n, r, 0.8)])
+    wind = np.stack([lowpass(c, 900) for c in _wind(n, r, 0.6)])
+    stove = np.stack([lowpass(c, 2200) for c in _hearth(n, r, fire_level)])
+    return 0.45 * norm(ticks) + 0.45 * norm(wet) + 0.25 * norm(wind) + 0.75 * norm(stove) + 0.08 * norm(room_tone(n, r))
+
+
+for f in (tent_rain, summer_storm, sleet_stove):
+    RECIPES[f.__name__] = f
+HAS_FIRE.add("sleet_stove")

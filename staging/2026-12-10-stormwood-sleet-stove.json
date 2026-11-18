@@ -1,0 +1,42 @@
+{
+ "channel": "stormwood",
+ "recipe": "sleet_stove",
+ "seed": 20261210,
+ "hours": 8,
+ "publish_at": "2026-12-10T19:00:00Z",
+ "title": "Freezing Rain & Sleet on the Window - Crackling Woodstove | Winter Storm Sleep 8 Hours",
+ "description": "8 hours in the Stormwood Cabin kitchen during a winter ice storm: sleet and freezing rain ticking on the frosted window, wind outside, and a woodstove burning softly behind its iron door. No music, no talking.\nThe sound never loops, with a gentle fade in and a slow die-down at the end. Made for falling asleep, staying asleep and winter evenings.\n\n0:00:00 The ice storm begins\n0:00:10 Sleet and woodstove (8 hours)\n7:45:00 The stove slowly burns down\n\nStormwood Cabin - Storms outside. Warmth inside.\nNew sessions every Monday and Thursday.\n\nScenes and sounds are original, created with AI tools and edited by Stormwood Cabin.\n\n#winterstorm #sleet #sleepsounds",
+ "tags": [
+  "freezing rain sounds",
+  "sleet on window",
+  "woodstove sounds",
+  "winter storm sleep",
+  "ice storm sounds",
+  "cabin winter storm",
+  "8 hours winter storm"
+ ],
+ "image": "assets/scene_sleet_stove.png",
+ "thumb": "assets/thumb_sleet_stove.jpg",
+ "localizations": {
+  "es": {
+   "title": "Lluvia Helada y Aguanieve en la Ventana - Estufa de Leña | Tormenta de Invierno 8 Horas",
+   "description": "8 horas en la cocina de Stormwood Cabin durante una tormenta de hielo: aguanieve en la ventana, viento y una estufa de leña. Sin música, sin voces.\n\nEscenas y sonidos originales, creados con herramientas de IA y editados por Stormwood Cabin."
+  },
+  "de": {
+   "title": "Eisregen & Graupel am Fenster - Knisternder Holzofen | Wintersturm 8 Stunden",
+   "description": "8 Stunden in der Küche der Stormwood Cabin während eines Eissturms: Graupel am Fenster, Wind und ein leise brennender Holzofen. Keine Musik, keine Stimmen.\n\nSzenen und Klänge sind original, mit KI-Werkzeugen erstellt und von Stormwood Cabin bearbeitet."
+  },
+  "fr": {
+   "title": "Pluie Verglaçante et Grésil sur la Vitre - Poêle à Bois | Tempête d'Hiver 8 Heures",
+   "description": "8 heures dans la cuisine de Stormwood Cabin pendant une tempête de verglas : grésil sur la vitre, vent et poêle à bois. Sans musique, sans voix.\n\nScènes et sons originaux, créés avec des outils d'IA et montés par Stormwood Cabin."
+  },
+  "pt": {
+   "title": "Chuva Congelante e Granizo na Janela - Fogão a Lenha | Tempestade de Inverno 8 Horas",
+   "description": "8 horas na cozinha da Stormwood Cabin durante uma tempestade de gelo: granizo na janela, vento e um fogão a lenha. Sem música, sem vozes.\n\nCenas e sons originais, criados com ferramentas de IA e editados por Stormwood Cabin."
+  },
+  "ja": {
+   "title": "窓に当たるみぞれと凍雨 - 薪ストーブ | 冬の嵐で眠る 8時間",
+   "description": "氷雨の夜、ストームウッド・キャビンの台所で。窓を打つみぞれ、外の風、静かに燃える薪ストーブを8時間。音楽なし、話し声なし。\n\n映像と音はオリジナルで、AIツールで作成し、Stormwood Cabinが編集しています。"
+  }
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "channel": "stormwood",
+ "recipe": "brown_rain",
+ "seed": 20261207,
+ "hours": 8,
+ "publish_at": "2026-12-07T19:00:00Z",
+ "title": "Brown Noise & Rain for Sleeping - Cozy Cabin Loft | 8 Hours",
+ "description": "8 hours of deep, soft brown noise blended with gentle rain on the roof of the Stormwood Cabin loft. A warm, steady sound to cover household noise and settle a busy mind. No thunder, no music, no talking.\nThe sound never loops, with a gentle fade in and a slow fade out at the end. Made for sleep, focus, reading and study.\n\n0:00:00 Brown noise and rain begin\n0:00:10 Cabin loft (8 hours)\n\nStormwood Cabin - Storms outside. Warmth inside.\nNew sessions every Monday and Thursday.\n\nScenes and sounds are original, created with AI tools and edited by Stormwood Cabin.\n\n#brownnoise #rainsounds #sleepsounds",
+ "tags": [
+  "brown noise rain",
+  "brown noise for sleeping",
+  "brown noise and rain",
+  "rain sounds for sleeping",
+  "focus sounds",
+  "cabin rain",
+  "8 hours brown noise"
+ ],
+ "image": "assets/scene_brown_rain_loft.png",
+ "thumb": "assets/thumb_brown_rain_loft.jpg",
+ "localizations": {
+  "es": {
+   "title": "Ruido Marrón y Lluvia para Dormir - Ático de una Cabaña Acogedora | 8 Horas",
+   "description": "8 horas de ruido marrón suave mezclado con lluvia sobre el tejado del ático de Stormwood Cabin. Sin truenos, sin música, sin voces.\n\nEscenas y sonidos originales, creados con herramientas de IA y editados por Stormwood Cabin."
+  },
+  "de": {
+   "title": "Braunes Rauschen & Regen zum Einschlafen - Gemütlicher Hüttendachboden | 8 Stunden",
+   "description": "8 Stunden weiches braunes Rauschen mit sanftem Regen auf dem Dach der Stormwood Cabin. Kein Donner, keine Musik, keine Stimmen.\n\nSzenen und Klänge sind original, mit KI-Werkzeugen erstellt und von Stormwood Cabin bearbeitet."
+  },
+  "fr": {
+   "title": "Bruit Brun et Pluie pour Dormir - Mezzanine d'un Chalet Cosy | 8 Heures",
+   "description": "8 heures de bruit brun doux mêlé à une pluie légère sur le toit de la mezzanine de Stormwood Cabin. Sans tonnerre, sans musique, sans voix.\n\nScènes et sons originaux, créés avec des outils d'IA et montés par Stormwood Cabin."
+  },
+  "pt": {
+   "title": "Ruído Marrom e Chuva para Dormir - Sótão de uma Cabana Aconchegante | 8 Horas",
+   "description": "8 horas de ruído marrom suave com chuva leve no telhado do sótão da Stormwood Cabin. Sem trovões, sem música, sem vozes.\n\nCenas e sons originais, criados com ferramentas de IA e editados por Stormwood Cabin."
+  },
+  "ja": {
+   "title": "ブラウンノイズと雨の音で眠る - 山小屋の屋根裏部屋 | 8時間",
+   "description": "ストームウッド・キャビンの屋根裏に降るやさしい雨と、深くやわらかなブラウンノイズを8時間。雷なし、音楽なし、話し声なし。\n\n映像と音はオリジナルで、AIツールで作成し、Stormwood Cabinが編集しています。"
+  }
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "channel": "valley",
+ "recipe": "summer_storm",
+ "seed": 20261205,
+ "hours": 8,
+ "publish_at": "2026-12-05T18:00:00Z",
+ "title": "Thunderstorm Sounds for Sleeping - Australian Summer Storm | 8 Hours",
+ "description": "8 hours of a warm summer thunderstorm over the Australian bush: heavy rain on gum trees and red earth, warm gusts and slow, rolling thunder far off. The thunder rolls in gently, with no sharp cracks. No music, no talking.\nThe storm never loops, with a gentle fade in and a slow fade out at the end. Made for falling asleep and staying asleep.\n\n0:00:00 The storm arrives\n0:00:10 Summer thunderstorm (8 hours)\n\nValley & Tide - nature sounds from wild places, for deep sleep.\nNew sessions every Tuesday, Thursday and Saturday.\n\nScenes and sounds are original, created with AI tools and edited by Valley & Tide.\n\n#thunderstorm #rainsounds #sleepsounds",
+ "tags": [
+  "thunderstorm sounds for sleeping",
+  "summer thunderstorm",
+  "australian thunderstorm",
+  "heavy rain and thunder",
+  "rain and thunder sounds",
+  "8 hours thunderstorm",
+  "sleep sounds"
+ ],
+ "image": "assets/vt_scene_summer_storm.png",
+ "thumb": "assets/vt_thumb_summer_storm.jpg",
+ "localizations": {
+  "es": {
+   "title": "Sonido de Tormenta para Dormir - Tormenta de Verano en Australia | 8 Horas",
+   "description": "8 horas de una cálida tormenta de verano en el monte australiano: lluvia intensa, ráfagas cálidas y truenos lejanos y suaves. Sin música, sin voces.\n\nEscenas y sonidos originales, creados con herramientas de IA y editados por Valley & Tide."
+  },
+  "de": {
+   "title": "Gewittergeräusche zum Einschlafen - Australisches Sommergewitter | 8 Stunden",
+   "description": "8 Stunden warmes Sommergewitter im australischen Busch: starker Regen, warme Böen und sanft rollender, ferner Donner. Keine Musik, keine Stimmen.\n\nSzenen und Klänge sind original, mit KI-Werkzeugen erstellt und von Valley & Tide bearbeitet."
+  },
+  "fr": {
+   "title": "Bruit d'Orage pour Dormir - Orage d'Été en Australie | 8 Heures",
+   "description": "8 heures d'un orage d'été dans le bush australien : forte pluie, rafales chaudes et tonnerre lointain qui roule doucement. Sans musique, sans voix.\n\nScènes et sons originaux, créés avec des outils d'IA et montés par Valley & Tide."
+  },
+  "pt": {
+   "title": "Som de Tempestade para Dormir - Tempestade de Verão na Austrália | 8 Horas",
+   "description": "8 horas de uma tempestade quente de verão no mato australiano: chuva forte, rajadas quentes e trovões distantes e suaves. Sem música, sem vozes.\n\nCenas e sons originais, criados com ferramentas de IA e editados por Valley & Tide."
+  },
+  "ja": {
+   "title": "眠れる雷雨の音 - オーストラリアの夏の嵐 | 8時間",
+   "description": "オーストラリアの原野に降る夏の雷雨を8時間。強い雨、あたたかい風、遠くでゆっくり鳴る雷。音楽なし、話し声なし。\n\n映像と音はオリジナルで、AIツールで作成し、Valley & Tideが編集しています。"
+  }
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "channel": "valley",
+ "recipe": "tent_rain",
+ "seed": 20261201,
+ "hours": 8,
+ "publish_at": "2026-12-01T18:00:00Z",
+ "title": "Rain on Tent Sounds for Sleeping - No Thunder | Pine Forest 8 Hours",
+ "description": "8 hours of steady rain on a small tent pitched in a tall pine forest at night. Soft taps on the tent close by, the hush of rain on the forest outside and the odd heavier drip from the pines. No thunder, no music, no talking.\nThe rain never loops, with a gentle fade in and a slow fade out at the end. Made for falling asleep, staying asleep, reading and study.\n\n0:00:00 Rain begins\n0:00:10 Rain on the tent (8 hours)\n\nValley & Tide - nature sounds from wild places, for deep sleep.\nNew sessions every Tuesday, Thursday and Saturday.\n\nScenes and sounds are original, created with AI tools and edited by Valley & Tide.\n\n#rainontent #rainsounds #sleepsounds",
+ "tags": [
+  "rain on tent sounds",
+  "rain on tent no thunder",
+  "rain on tent for sleeping",
+  "camping rain sounds",
+  "rain sounds for sleeping",
+  "8 hours rain",
+  "sleep sounds"
+ ],
+ "image": "assets/vt_scene_tent_rain.png",
+ "thumb": "assets/vt_thumb_tent_rain.jpg",
+ "localizations": {
+  "es": {
+   "title": "Sonido de Lluvia sobre una Tienda para Dormir - Sin Truenos | Bosque de Pinos 8 Horas",
+   "description": "8 horas de lluvia constante sobre una pequeña tienda de campaña en un bosque de pinos de noche. Sin truenos, sin música, sin voces.\n\nEscenas y sonidos originales, creados con herramientas de IA y editados por Valley & Tide."
+  },
+  "de": {
+   "title": "Regen aufs Zelt zum Einschlafen - Ohne Donner | Kiefernwald 8 Stunden",
+   "description": "8 Stunden gleichmäßiger Regen auf ein kleines Zelt in einem nächtlichen Kiefernwald. Kein Donner, keine Musik, keine Stimmen.\n\nSzenen und Klänge sind original, mit KI-Werkzeugen erstellt und von Valley & Tide bearbeitet."
+  },
+  "fr": {
+   "title": "Bruit de Pluie sur une Tente pour Dormir - Sans Tonnerre | Forêt de Pins 8 Heures",
+   "description": "8 heures de pluie régulière sur une petite tente dans une forêt de pins, la nuit. Sans tonnerre, sans musique, sans voix.\n\nScènes et sons originaux, créés avec des outils d'IA et montés par Valley & Tide."
+  },
+  "pt": {
+   "title": "Som de Chuva na Barraca para Dormir - Sem Trovões | Floresta de Pinheiros 8 Horas",
+   "description": "8 horas de chuva constante numa pequena barraca numa floresta de pinheiros à noite. Sem trovões, sem música, sem vozes.\n\nCenas e sons originais, criados com ferramentas de IA e editados por Valley & Tide."
+  },
+  "ja": {
+   "title": "テントに降る雨の音で眠る - 雷なし | 松林 8時間",
+   "description": "夜の松林に張った小さなテントに降り続く雨の音を8時間。雷なし、音楽なし、話し声なし。\n\n映像と音はオリジナルで、AIツールで作成し、Valley & Tideが編集しています。"
+  }
+ }
+}

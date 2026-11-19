@@ -1,0 +1,255 @@
+{
+ "checked_at": "2026-11-19T04:23:15.180921Z",
+ "channels": {
+  "stormwood": {
+   "id": "UCasC3K1be1EwfBzD7Sg1S6A",
+   "title": "Stormwood Cabin",
+   "status": {
+    "privacyStatus": "public",
+    "isLinked": true,
+    "longUploadsStatus": "allowed",
+    "isChannelMonetizationEnabled": false
+   },
+   "statistics": {
+    "viewCount": "0",
+    "subscriberCount": "0",
+    "hiddenSubscriberCount": false,
+    "videoCount": "1"
+   },
+   "uploads_seen": [
+    {
+     "id": "DZ4k-IVDGZA",
+     "title": "Crackling Fireplace Sounds for Sleeping - No Music, No Rain | Cozy Cabin Fireplace 8 Hours",
+     "privacy": "private"
+    },
+    {
+     "id": "RZKPCKYCaYE",
+     "title": "Cozy Christmas Ambience - Fireplace & Gentle Snowfall, No Music | Christmas Cabin 8 Hours",
+     "privacy": "private"
+    },
+    {
+     "id": "AN6Fv02FM6g",
+     "title": "Blizzard Outside, Crackling Fireplace Inside - Howling Wind and Snow for Sleep | 8 Hours",
+     "privacy": "private"
+    },
+    {
+     "id": "c4e6fGmqRXQ",
+     "title": "Heavy Rain on a Tin Roof for Sleeping - Cabin Attic, No Thunder, No Music | 8 Hours",
+     "privacy": "private"
+    },
+    {
+     "id": "ANBPZJryQ8Q",
+     "title": "Heavy Rain on a Log Cabin Roof for Sleeping - No Thunder, No Music | 8 Hours",
+     "privacy": "public"
+    },
+    {
+     "id": "-RRXA08TqiY",
+     "title": "Rain on a Cabin Roof and a Crackling Fireplace for Sleep - No Thunder | 8 Hours",
+     "privacy": "private"
+    }
+   ]
+  },
+  "valley": {
+   "id": "UC0GYz8SesCGxNZut0_I_BIg",
+   "title": "Valley & Tide",
+   "status": {
+    "privacyStatus": "public",
+    "isLinked": true,
+    "longUploadsStatus": "eligible",
+    "isChannelMonetizationEnabled": false
+   },
+   "statistics": {
+    "viewCount": "0",
+    "subscriberCount": "0",
+    "hiddenSubscriberCount": false,
+    "videoCount": "0"
+   },
+   "uploads_seen": [
+    {
+     "id": "-Bs_BrNaMI8",
+     "title": "Deleted video",
+     "privacy": "privacyStatusUnspecified"
+    },
+    {
+     "id": "3ydABFF9RS8",
+     "title": "Deleted video",
+     "privacy": "privacyStatusUnspecified"
+    },
+    {
+     "id": "3HKjl-2v8Rk",
+     "title": "Deleted video",
+     "privacy": "privacyStatusUnspecified"
+    },
+    {
+     "id": "G1IuSUfRFR4",
+     "title": "Deleted video",
+     "privacy": "privacyStatusUnspecified"
+    },
+    {
+     "id": "QlwU-y-odWA",
+     "title": "Deleted video",
+     "privacy": "privacyStatusUnspecified"
+    }
+   ]
+  }
+ },
+ "videos": {
+  "AN6Fv02FM6g": {
+   "channel": "stormwood",
+   "title": "Blizzard Outside, Crackling Fireplace Inside - Howling Wind and Snow for Sleep | 8 Hours",
+   "status": {
+    "uploadStatus": "processed",
+    "privacyStatus": "private",
+    "publishAt": "2026-11-23T19:00:00Z",
+    "license": "youtube",
+    "embeddable": true,
+    "publicStatsViewable": true,
+    "madeForKids": false,
+    "selfDeclaredMadeForKids": false
+   },
+   "processing": "succeeded",
+   "duration": "PT8H1S",
+   "statistics": {
+    "viewCount": "0",
+    "likeCount": "0",
+    "dislikeCount": "0",
+    "favoriteCount": "0",
+    "commentCount": "0"
+   }
+  },
+  "RZKPCKYCaYE": {
+   "channel": "stormwood",
+   "title": "Cozy Christmas Ambience - Fireplace & Gentle Snowfall, No Music | Christmas Cabin 8 Hours",
+   "status": {
+    "uploadStatus": "processed",
+    "privacyStatus": "private",
+    "publishAt": "2026-12-03T19:00:00Z",
+    "license": "youtube",
+    "embeddable": true,
+    "publicStatsViewable": true,
+    "madeForKids": false,
+    "selfDeclaredMadeForKids": false
+   },
+   "processing": "succeeded",
+   "duration": "PT8H1S",
+   "statistics": {
+    "viewCount": "0",
+    "likeCount": "0",
+    "dislikeCount": "0",
+    "favoriteCount": "0",
+    "commentCount": "0"
+   }
+  },
+  "-RRXA08TqiY": {
+   "channel": "stormwood",
+   "title": "Rain on a Cabin Roof and a Crackling Fireplace for Sleep - No Thunder | 8 Hours",
+   "status": {
+    "uploadStatus": "processed",
+    "privacyStatus": "private",
+    "publishAt": "2026-11-19T19:00:00Z",
+    "license": "youtube",
+    "embeddable": true,
+    "publicStatsViewable": true,
+    "madeForKids": false,
+    "selfDeclaredMadeForKids": false
+   },
+   "processing": "succeeded",
+   "duration": "PT8H1S",
+   "statistics": {
+    "viewCount": "1",
+    "likeCount": "1",
+    "dislikeCount": "0",
+    "favoriteCount": "0",
+    "commentCount": "0"
+   }
+  },
+  "c4e6fGmqRXQ": {
+   "channel": "stormwood",
+   "title": "Heavy Rain on a Tin Roof for Sleeping - Cabin Attic, No Thunder, No Music | 8 Hours",
+   "status": {
+    "uploadStatus": "processed",
+    "privacyStatus": "private",
+    "publishAt": "2026-11-26T19:00:00Z",
+    "license": "youtube",
+    "embeddable": true,
+    "publicStatsViewable": true,
+    "madeForKids": false,
+    "selfDeclaredMadeForKids": false
+   },
+   "processing": "succeeded",
+   "duration": "PT8H1S",
+   "statistics": {
+    "viewCount": "0",
+    "likeCount": "0",
+    "dislikeCount": "0",
+    "favoriteCount": "0",
+    "commentCount": "0"
+   }
+  },
+  "DZ4k-IVDGZA": {
+   "channel": "stormwood",
+   "title": "Crackling Fireplace Sounds for Sleeping - No Music, No Rain | Cozy Cabin Fireplace 8 Hours",
+   "status": {
+    "uploadStatus": "processed",
+    "privacyStatus": "private",
+    "publishAt": "2026-11-30T19:00:00Z",
+    "license": "youtube",
+    "embeddable": true,
+    "publicStatsViewable": true,
+    "madeForKids": false,
+    "selfDeclaredMadeForKids": false
+   },
+   "processing": "succeeded",
+   "duration": "PT8H1S",
+   "statistics": {
+    "viewCount": "0",
+    "likeCount": "0",
+    "dislikeCount": "0",
+    "favoriteCount": "0",
+    "commentCount": "0"
+   }
+  },
+  "ANBPZJryQ8Q": {
+   "channel": "stormwood",
+   "title": "Heavy Rain on a Log Cabin Roof for Sleeping - No Thunder, No Music | 8 Hours",
+   "status": {
+    "uploadStatus": "processed",
+    "privacyStatus": "public",
+    "license": "youtube",
+    "embeddable": true,
+    "publicStatsViewable": true,
+    "madeForKids": false,
+    "selfDeclaredMadeForKids": false
+   },
+   "processing": "succeeded",
+   "duration": "PT8H1S",
+   "statistics": {
+    "viewCount": "1",
+    "likeCount": "1",
+    "dislikeCount": "0",
+    "favoriteCount": "0",
+    "commentCount": "0"
+   }
+  },
+  "G1IuSUfRFR4": {
+   "channel": "valley",
+   "found": false
+  },
+  "3ydABFF9RS8": {
+   "channel": "valley",
+   "found": false
+  },
+  "-Bs_BrNaMI8": {
+   "channel": "valley",
+   "found": false
+  },
+  "QlwU-y-odWA": {
+   "channel": "valley",
+   "found": false
+  },
+  "3HKjl-2v8Rk": {
+   "channel": "valley",
+   "found": false
+  }
+ }
+}

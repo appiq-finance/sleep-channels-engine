@@ -39,6 +39,8 @@ def main():
         creds = Credentials(None, refresh_token=os.environ[tok], token_uri="https://oauth2.googleapis.com/token",
                             client_id=os.environ["YOUTUBE_CLIENT_ID"], client_secret=os.environ["YOUTUBE_CLIENT_SECRET"])
         return build("youtube", "v3", credentials=creds, cache_discovery=False)
+    if os.path.exists(f"{ROOT}/PAUSE_UPLOADS"):
+        print("uploads are paused (PAUSE_UPLOADS) - nothing uploaded"); return
     yt = connect()
     mine = yt.channels().list(part="id", mine=True).execute()["items"][0]["id"]
     assert mine == chan_id, f"wrong channel: {mine}"

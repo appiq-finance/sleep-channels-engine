@@ -34,6 +34,8 @@ jobs:
           import glob, os, json
           pend = [f for f in sorted(glob.glob("queue/*.json"))
                   if not os.path.exists("done/" + os.path.basename(f))]
+          if os.path.exists("PAUSE_UPLOADS"):   # safety stop: nothing uploads while this file exists
+              pend = []
           print("jobs=" + json.dumps(pend[:12]))
           PY
   make:
